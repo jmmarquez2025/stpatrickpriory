@@ -21,6 +21,7 @@ git remote add origin https://github.com/YOUR_USERNAME/stpatrickpriory.git
 git push -u origin main
 ```
 
+
 ### 3. Enable GitHub Pages
 1. Go to your repo → **Settings** → **Pages**
 2. Under **Source**, select **Deploy from a branch**
