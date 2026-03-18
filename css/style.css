@@ -40,7 +40,7 @@ a { text-decoration: none; color: inherit; }
 .pillar-icon { width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-family: var(--font-display); font-size: 1.4rem; color: var(--gold); }
 
 /* Nav */
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 36px; background: var(--forest-deep); border-bottom: 1px solid rgba(197,151,62,0.15); transition: all 0.5s var(--ease); }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 36px; background: var(--forest-deep); border-bottom: 1px solid rgba(197,151,62,0.35); transition: all 0.5s var(--ease); }
 .nav.scrolled { background: rgba(13,31,21,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(197,151,62,0.12); }
 .nav-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; transition: height 0.5s var(--ease); }
 .nav.scrolled .nav-inner { height: 60px; }
