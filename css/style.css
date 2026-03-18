@@ -87,6 +87,9 @@ a { text-decoration: none; color: inherit; }
 .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; opacity: 0; animation: fadeUp 1s var(--ease) 1.5s forwards; }
 .hero-scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 0 auto; animation: scrollPulse 2s ease infinite; }
 
+
+/* Hero video background */
+.hero-bg video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 /* Motto */
 .motto { background: var(--forest); padding: 56px 32px; text-align: center; position: relative; overflow: hidden; }
 .motto::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(197,151,62,0.03) 80px, rgba(197,151,62,0.03) 81px); }
