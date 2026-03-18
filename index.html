@@ -7,101 +7,81 @@
   <meta name="description" content="Home of the Dominican Friars at St. Patrick Church in downtown Columbus, Ohio. Dedicated to preaching, prayer, and community.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ========================================
-       CSS VARIABLES
-    ======================================== */
     :root {
-      --color-forest: #1a3a2a;
-      --color-forest-deep: #0f2418;
-      --color-forest-mid: #254a36;
-      --color-gold: #c5973e;
-      --color-gold-light: #dbb568;
-      --color-gold-pale: #f0ddb0;
-      --color-cream: #f5f0e6;
-      --color-cream-dark: #e8dece;
-      --color-ivory: #faf8f2;
-      --color-text: #2c2c2c;
-      --color-text-muted: #5a5a5a;
-      --color-white: #ffffff;
-
+      --forest: #1a3a2a;
+      --forest-deep: #0d1f15;
+      --forest-mid: #254a36;
+      --gold: #c5973e;
+      --gold-light: #dbb568;
+      --gold-pale: #f0ddb0;
+      --cream: #f5f0e6;
+      --cream-dark: #e8dece;
+      --ivory: #faf8f2;
+      --text: #2c2c2c;
+      --text-muted: #6a6a6a;
+      --white: #ffffff;
       --font-display: 'Cinzel', serif;
-      --font-body-serif: 'Cormorant Garamond', serif;
-      --font-body-sans: 'Source Sans 3', sans-serif;
-
-      --max-width: 1200px;
-      --section-pad: 100px;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Outfit', sans-serif;
+      --max-w: 1240px;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* ========================================
-       RESET & BASE
-    ======================================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: var(--font-body-sans);
-      color: var(--color-text);
-      background: var(--color-ivory);
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--ivory);
       line-height: 1.7;
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
 
-    /* ========================================
-       UTILITY
-    ======================================== */
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-
+    /* ===== UTILITY ===== */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 36px; }
     .section-label {
-      font-family: var(--font-body-sans);
+      font-family: var(--font-sans);
       text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 0.75rem;
+      letter-spacing: 5px;
+      font-size: 0.7rem;
       font-weight: 600;
-      color: var(--color-gold);
+      color: var(--gold);
       margin-bottom: 16px;
     }
-
     .section-title {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 600;
-      line-height: 1.25;
-      color: var(--color-forest);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--forest);
       margin-bottom: 24px;
     }
-
     .section-body {
-      font-family: var(--font-body-serif);
-      font-size: 1.25rem;
-      line-height: 1.8;
-      color: var(--color-text-muted);
-      max-width: 640px;
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+      max-width: 620px;
     }
-
     .btn {
       display: inline-block;
-      font-family: var(--font-body-sans);
+      font-family: var(--font-sans);
       font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 1.5px;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 14px 36px;
-      border: 2px solid var(--color-gold);
-      color: var(--color-gold);
+      padding: 15px 40px;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
       background: transparent;
       cursor: pointer;
-      transition: all 0.35s ease;
+      transition: all 0.4s var(--ease-out-expo);
       position: relative;
       overflow: hidden;
     }
@@ -109,109 +89,79 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: var(--color-gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s ease;
+      background: var(--gold);
+      transform: translateY(101%);
+      transition: transform 0.4s var(--ease-out-expo);
       z-index: 0;
     }
-    .btn:hover::before { transform: scaleX(1); }
-    .btn:hover { color: var(--color-forest-deep); }
+    .btn:hover::before { transform: translateY(0); }
+    .btn:hover { color: var(--forest-deep); }
     .btn span { position: relative; z-index: 1; }
-
     .btn-solid {
-      background: var(--color-gold);
-      color: var(--color-forest-deep);
-      border-color: var(--color-gold);
+      background: var(--gold);
+      color: var(--forest-deep);
+      border-color: var(--gold);
     }
-    .btn-solid::before { background: var(--color-gold-light); }
+    .btn-solid::before { background: var(--gold-light); }
 
-    /* ========================================
-       NAVIGATION
-    ======================================== */
+    /* ===== NAV ===== */
     .nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(15, 36, 24, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(197, 151, 62, 0.15);
-      transition: background 0.4s ease;
+      padding: 0 36px;
+      transition: all 0.5s var(--ease-out-expo);
     }
-
+    .nav.scrolled {
+      background: rgba(13, 31, 21, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(197, 151, 62, 0.12);
+    }
     .nav-inner {
-      max-width: var(--max-width);
+      max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 80px;
+      transition: height 0.5s var(--ease-out-expo);
     }
-
+    .nav.scrolled .nav-inner { height: 64px; }
     .nav-logo {
       font-family: var(--font-display);
-      font-size: 1.05rem;
-      color: var(--color-cream);
-      letter-spacing: 2px;
-      font-weight: 600;
-    }
-    .nav-logo em {
-      font-style: normal;
-      color: var(--color-gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-body-sans);
-      font-size: 0.82rem;
+      font-size: 0.95rem;
+      color: var(--cream);
+      letter-spacing: 3px;
       font-weight: 500;
-      letter-spacing: 1.5px;
+    }
+    .nav-logo em { font-style: normal; color: var(--gold); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--color-cream-dark);
+      color: rgba(245, 240, 230, 0.7);
       transition: color 0.3s;
-      position: relative;
     }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--color-gold);
-      transition: width 0.3s;
-    }
-    .nav-links a:hover { color: var(--color-gold); }
-    .nav-links a:hover::after { width: 100%; }
-
+    .nav-links a:hover { color: var(--gold); }
     .nav-hamburger {
       display: none;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       cursor: pointer;
       padding: 8px;
       background: none;
       border: none;
     }
     .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--color-cream);
+      display: block; width: 24px; height: 1.5px;
+      background: var(--cream);
       transition: all 0.3s;
     }
 
-    /* ========================================
-       HERO
-    ======================================== */
+    /* ===== HERO ===== */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -219,516 +169,462 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: var(--color-forest-deep);
       overflow: hidden;
     }
-
     .hero-bg {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(15, 36, 24, 0.35) 0%,
-          rgba(15, 36, 24, 0.55) 50%,
-          rgba(15, 36, 24, 0.85) 100%
-        ),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="0.5" fill="rgba(197,151,62,0.08)"/></pattern></defs><rect fill="url(%23g)" width="100" height="100"/></svg>');
-      background-color: var(--color-forest-deep);
+      z-index: 0;
     }
-
-    /* Decorative cross watermark */
-    .hero-bg::before {
-      content: '✠';
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transform: scale(1.1);
+      transition: transform 8s ease-out;
+    }
+    .hero-bg.loaded img { transform: scale(1); }
+    .hero-bg::after {
+      content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 40vw;
-      color: rgba(197, 151, 62, 0.03);
-      pointer-events: none;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(13,31,21,0.4) 0%, rgba(13,31,21,0.2) 40%, rgba(13,31,21,0.7) 100%),
+        linear-gradient(0deg, rgba(13,31,21,0.5) 0%, transparent 50%);
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
       padding: 0 32px;
-      max-width: 800px;
+      max-width: 860px;
     }
-
     .hero-shield {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 32px;
-      border: 2px solid var(--color-gold);
+      width: 72px; height: 72px;
+      margin: 0 auto 28px;
+      border: 1.5px solid rgba(197, 151, 62, 0.5);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      color: var(--color-gold);
-      animation: fadeDown 1s ease 0.2s both;
+      font-size: 1.6rem;
+      color: var(--gold);
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 0.3s forwards;
     }
-
     .hero-overtitle {
-      font-family: var(--font-body-sans);
+      font-family: var(--font-sans);
       text-transform: uppercase;
-      letter-spacing: 6px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--color-gold-light);
+      letter-spacing: 8px;
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: var(--gold-light);
       margin-bottom: 20px;
-      animation: fadeDown 1s ease 0.4s both;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 0.5s forwards;
     }
-
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      font-weight: 700;
-      color: var(--color-cream);
-      line-height: 1.15;
-      margin-bottom: 12px;
-      animation: fadeDown 1s ease 0.6s both;
+      font-size: clamp(2.6rem, 7vw, 4.5rem);
+      font-weight: 500;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 0.7s forwards;
     }
-
     .hero-subtitle {
-      font-family: var(--font-body-serif);
-      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      font-family: var(--font-serif);
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
       font-style: italic;
-      color: var(--color-gold-pale);
-      margin-bottom: 40px;
+      color: var(--gold-pale);
+      margin-bottom: 44px;
       font-weight: 400;
-      animation: fadeDown 1s ease 0.8s both;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 0.9s forwards;
     }
-
     .hero-ctas {
       display: flex;
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
-      animation: fadeDown 1s ease 1s both;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 1.1s forwards;
     }
-
-    .hero .btn { border-color: var(--color-gold-light); color: var(--color-cream); }
-    .hero .btn::before { background: var(--color-gold); }
-    .hero .btn:hover { color: var(--color-forest-deep); }
-    .hero .btn-solid { background: var(--color-gold); color: var(--color-forest-deep); }
-
+    .hero .btn { border-color: rgba(197,151,62,0.5); color: var(--cream); }
+    .hero .btn::before { background: var(--gold); }
+    .hero .btn:hover { color: var(--forest-deep); }
+    .hero .btn-solid { background: var(--gold); color: var(--forest-deep); }
     .hero-scroll {
       position: absolute;
-      bottom: 36px;
-      left: 50%;
+      bottom: 40px; left: 50%;
       transform: translateX(-50%);
       z-index: 2;
-      animation: bounce 2s infinite 2s;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 1.5s forwards;
     }
-    .hero-scroll span {
-      display: block;
-      width: 20px;
-      height: 32px;
-      border: 2px solid rgba(197, 151, 62, 0.4);
-      border-radius: 12px;
+    .hero-scroll-line {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      margin: 0 auto;
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    /* ===== MOTTO ===== */
+    .motto {
+      background: var(--forest);
+      padding: 56px 32px;
+      text-align: center;
       position: relative;
+      overflow: hidden;
     }
-    .hero-scroll span::before {
+    .motto::before {
       content: '';
       position: absolute;
-      top: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 3px;
-      height: 8px;
-      background: var(--color-gold);
-      border-radius: 2px;
-      animation: scrollDot 2s infinite;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 80px,
+        rgba(197,151,62,0.03) 80px,
+        rgba(197,151,62,0.03) 81px
+      );
     }
-
-    /* ========================================
-       MOTTO BAND
-    ======================================== */
-    .motto {
-      background: var(--color-forest);
-      padding: 48px 32px;
-      text-align: center;
-      border-top: 3px solid var(--color-gold);
-    }
-
     .motto blockquote {
-      font-family: var(--font-body-serif);
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 3vw, 2rem);
       font-style: italic;
-      color: var(--color-cream);
+      color: var(--cream);
       max-width: 700px;
       margin: 0 auto;
       line-height: 1.6;
+      position: relative;
     }
-
     .motto cite {
       display: block;
       margin-top: 16px;
       font-style: normal;
-      font-family: var(--font-body-sans);
-      font-size: 0.8rem;
-      letter-spacing: 3px;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: var(--color-gold);
+      color: var(--gold);
     }
 
-    /* ========================================
-       ABOUT SECTION
-    ======================================== */
-    .about {
-      padding: var(--section-pad) 0;
-      background: var(--color-ivory);
-    }
-
+    /* ===== ABOUT ===== */
+    .about { padding: 120px 0; background: var(--ivory); }
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 80px;
       align-items: center;
     }
-
-    .about-image {
-      position: relative;
-    }
-
-    .about-image .img-placeholder {
+    .about-image { position: relative; overflow: hidden; }
+    .about-image img {
       width: 100%;
       aspect-ratio: 4/5;
-      background: linear-gradient(145deg, var(--color-forest-mid), var(--color-forest-deep));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-gold-pale);
-      font-family: var(--font-body-serif);
-      font-size: 1.1rem;
-      font-style: italic;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-out-expo);
     }
-
+    .about-image:hover img { transform: scale(1.03); }
     .about-image::after {
       content: '';
       position: absolute;
-      bottom: -16px;
-      right: -16px;
-      width: 100%;
-      height: 100%;
-      border: 2px solid var(--color-gold);
+      bottom: -16px; right: -16px;
+      width: 100%; height: 100%;
+      border: 1.5px solid var(--gold);
       z-index: -1;
+      transition: all 0.6s var(--ease-out-expo);
     }
+    .about-image:hover::after { bottom: -10px; right: -10px; }
 
-    /* ========================================
-       FRIARS SECTION
-    ======================================== */
-    .friars {
-      padding: var(--section-pad) 0;
-      background: var(--color-cream);
+    /* ===== PARALLAX IMAGE BREAK ===== */
+    .parallax-break {
+      position: relative;
+      height: 50vh;
+      min-height: 360px;
+      overflow: hidden;
     }
-
-    .friars-header {
-      text-align: center;
-      margin-bottom: 64px;
+    .parallax-break img {
+      position: absolute;
+      top: -20%; left: 0;
+      width: 100%; height: 140%;
+      object-fit: cover;
+      will-change: transform;
     }
-
-    .friars-header .section-body {
-      margin: 0 auto;
-    }
-
-    .friars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-    }
-
-    .friar-card {
-      text-align: center;
-    }
-
-    .friar-card .avatar {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, var(--color-forest-mid), var(--color-forest-deep));
-      margin: 0 auto 24px;
+    .parallax-break .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13,31,21,0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3rem;
-      color: var(--color-gold-pale);
-      border: 3px solid var(--color-gold);
-      position: relative;
-      overflow: hidden;
+    }
+    .parallax-break .overlay-text {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+      color: var(--cream);
+      text-align: center;
+      font-weight: 400;
+      letter-spacing: 2px;
+      max-width: 600px;
+      padding: 0 24px;
     }
 
+    /* ===== FRIARS ===== */
+    .friars { padding: 120px 0; background: var(--cream); }
+    .friars-header { text-align: center; margin-bottom: 72px; }
+    .friars-header .section-body { margin: 0 auto; }
+    .friars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+    .friar-card { text-align: center; }
+    .friar-card .avatar-wrap {
+      position: relative;
+      width: 200px; height: 200px;
+      margin: 0 auto 28px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+    }
+    .friar-card .avatar-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out-expo);
+    }
+    .friar-card:hover .avatar-wrap img { transform: scale(1.08); }
     .friar-card h3 {
       font-family: var(--font-display);
-      font-size: 1.15rem;
-      color: var(--color-forest);
+      font-size: 1.1rem;
+      color: var(--forest);
       margin-bottom: 4px;
+      font-weight: 500;
     }
-
     .friar-card .role {
-      font-family: var(--font-body-serif);
+      font-family: var(--font-serif);
       font-style: italic;
-      color: var(--color-text-muted);
-      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
     }
 
-    /* ========================================
-       PREACHING & MINISTRY
-    ======================================== */
+    /* ===== MINISTRY ===== */
     .ministry {
-      padding: var(--section-pad) 0;
-      background: var(--color-forest-deep);
-      color: var(--color-cream);
+      padding: 120px 0;
+      background: var(--forest-deep);
+      color: var(--cream);
       position: relative;
       overflow: hidden;
     }
-
     .ministry::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background:
-        radial-gradient(ellipse at 20% 80%, rgba(197, 151, 62, 0.06) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(197, 151, 62, 0.04) 0%, transparent 60%);
-      pointer-events: none;
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0v60M0 30h60' stroke='rgba(197,151,62,0.04)' stroke-width='0.5'/%3E%3C/svg%3E");
     }
-
-    .ministry .section-title { color: var(--color-cream); }
-    .ministry .section-body { color: var(--color-cream-dark); }
-
-    .ministry-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .ministry-intro {
-      text-align: center;
-      margin-bottom: 72px;
-    }
-
+    .ministry .section-title { color: var(--cream); }
+    .ministry .section-body { color: var(--cream-dark); }
+    .ministry-content { position: relative; z-index: 1; }
+    .ministry-intro { text-align: center; margin-bottom: 80px; }
     .ministry-intro .section-body { margin: 0 auto; }
-
-    .ministry-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-
+    .ministry-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
     .ministry-card {
       padding: 48px 36px;
-      border: 1px solid rgba(197, 151, 62, 0.2);
-      background: rgba(26, 58, 42, 0.4);
-      transition: all 0.4s ease;
+      border: 1px solid rgba(197,151,62,0.15);
+      background: rgba(26,58,42,0.3);
+      backdrop-filter: blur(4px);
+      transition: all 0.5s var(--ease-out-expo);
+      position: relative;
+      overflow: hidden;
     }
-
+    .ministry-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.6s var(--ease-out-expo);
+    }
+    .ministry-card:hover::before { transform: scaleX(1); }
     .ministry-card:hover {
-      border-color: var(--color-gold);
-      background: rgba(26, 58, 42, 0.7);
-      transform: translateY(-4px);
+      border-color: rgba(197,151,62,0.3);
+      background: rgba(26,58,42,0.6);
+      transform: translateY(-6px);
     }
-
-    .ministry-card .card-icon {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      display: block;
-      color: var(--color-gold);
+    .ministry-card .card-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: rgba(197,151,62,0.15);
+      margin-bottom: 16px;
+      line-height: 1;
     }
-
     .ministry-card h3 {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       margin-bottom: 16px;
-      color: var(--color-cream);
+      color: var(--cream);
+      font-weight: 500;
     }
-
     .ministry-card p {
-      font-family: var(--font-body-serif);
+      font-family: var(--font-serif);
       font-size: 1.1rem;
-      color: var(--color-cream-dark);
-      line-height: 1.7;
+      color: rgba(232,222,206,0.8);
+      line-height: 1.75;
     }
 
-    /* ========================================
-       CONTACT & LOCATION
-    ======================================== */
-    .contact {
-      padding: var(--section-pad) 0;
-      background: var(--color-ivory);
+    /* ===== GALLERY ===== */
+    .gallery { padding: 120px 0; background: var(--ivory); }
+    .gallery-header { text-align: center; margin-bottom: 60px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 12px;
     }
+    .gallery-grid .g-item { overflow: hidden; position: relative; cursor: pointer; }
+    .gallery-grid .g-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease-out-expo);
+    }
+    .gallery-grid .g-item:hover img { transform: scale(1.06); }
+    .gallery-grid .g-item::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(13,31,21,0);
+      transition: background 0.5s;
+    }
+    .gallery-grid .g-item:hover::after { background: rgba(13,31,21,0.15); }
+    .gallery-grid .g-item:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; }
+    .gallery-grid .g-item:nth-child(1) img { aspect-ratio: 1/1; }
+    .gallery-grid .g-item:nth-child(n+2) img { aspect-ratio: 1/1; }
 
+    /* ===== CONTACT ===== */
+    .contact { padding: 120px 0; background: var(--cream); }
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 72px;
+      gap: 80px;
       align-items: start;
     }
-
     .contact-info h3 {
       font-family: var(--font-display);
-      font-size: 1.05rem;
-      color: var(--color-forest);
-      margin-bottom: 8px;
-      margin-top: 32px;
+      font-size: 1rem;
+      color: var(--forest);
+      margin-bottom: 6px;
+      margin-top: 28px;
+      font-weight: 500;
     }
     .contact-info h3:first-of-type { margin-top: 0; }
-
     .contact-info p, .contact-info a {
-      font-family: var(--font-body-serif);
-      font-size: 1.15rem;
-      color: var(--color-text-muted);
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: var(--text-muted);
       line-height: 1.7;
     }
-    .contact-info a { color: var(--color-gold); transition: color 0.3s; }
-    .contact-info a:hover { color: var(--color-forest); }
-
+    .contact-info a { color: var(--gold); transition: color 0.3s; }
+    .contact-info a:hover { color: var(--forest); }
     .contact-map {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: var(--color-cream-dark);
-      border: 1px solid var(--color-cream-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-body-serif);
-      font-style: italic;
-      color: var(--color-text-muted);
-      font-size: 1rem;
-      overflow: hidden;
+      width: 100%; aspect-ratio: 4/3;
+      overflow: hidden; border: 0;
     }
+    .contact-map iframe { width: 100%; height: 100%; border: 0; }
 
-    .contact-map iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    /* ========================================
-       FOOTER
-    ======================================== */
+    /* ===== FOOTER ===== */
     .footer {
-      background: var(--color-forest-deep);
-      padding: 48px 0;
+      background: var(--forest-deep);
+      padding: 56px 0;
       text-align: center;
-      border-top: 3px solid var(--color-gold);
     }
-
     .footer-logo {
       font-family: var(--font-display);
-      font-size: 1rem;
-      letter-spacing: 2px;
-      color: var(--color-cream);
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      color: var(--cream);
       margin-bottom: 16px;
+      font-weight: 500;
     }
-    .footer-logo em { font-style: normal; color: var(--color-gold); }
-
+    .footer-logo em { font-style: normal; color: var(--gold); }
     .footer p {
-      font-family: var(--font-body-sans);
-      font-size: 0.8rem;
-      color: rgba(245, 240, 230, 0.5);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      color: rgba(245,240,230,0.4);
       letter-spacing: 1px;
     }
-
     .footer-divider {
-      width: 48px;
-      height: 1px;
-      background: var(--color-gold);
+      width: 40px; height: 1px;
+      background: var(--gold);
       margin: 20px auto;
-      opacity: 0.4;
+      opacity: 0.3;
     }
 
-    /* ========================================
-       ANIMATIONS
-    ======================================== */
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50%      { transform: translateX(-50%) translateY(8px); }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(0.6); transform-origin: top; }
     }
-
-    @keyframes scrollDot {
-      0%   { opacity: 1; top: 6px; }
-      100% { opacity: 0; top: 16px; }
-    }
-
-    /* Scroll reveal */
     .reveal {
       opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(40px);
+      transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
     }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    /* Stagger children */
+    .stagger > *:nth-child(1) { transition-delay: 0s; }
+    .stagger > *:nth-child(2) { transition-delay: 0.1s; }
+    .stagger > *:nth-child(3) { transition-delay: 0.2s; }
+    .stagger > *:nth-child(4) { transition-delay: 0.25s; }
+    .stagger > *:nth-child(5) { transition-delay: 0.3s; }
+    .stagger > *:nth-child(6) { transition-delay: 0.35s; }
 
-    /* ========================================
-       RESPONSIVE
-    ======================================== */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
-      .about-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .friars-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .ministry-cards {
-        grid-template-columns: 1fr;
-      }
-
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .friars-grid { grid-template-columns: 1fr 1fr; }
+      .ministry-cards { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid .g-item:nth-child(1) { grid-column: 1 / 3; grid-row: auto; }
       .about-image::after { display: none; }
     }
-
     @media (max-width: 640px) {
-      :root { --section-pad: 64px; }
-
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
-
-      /* Mobile menu */
       .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: rgba(15, 36, 24, 0.97);
-        padding: 32px;
-        gap: 24px;
-        border-bottom: 1px solid rgba(197, 151, 62, 0.2);
+        display: flex; flex-direction: column;
+        position: absolute; top: 80px; left: 0; right: 0;
+        background: rgba(13,31,21,0.97);
+        padding: 32px; gap: 24px;
+        border-bottom: 1px solid rgba(197,151,62,0.15);
       }
-
-      .friars-grid {
-        grid-template-columns: 1fr;
-      }
-
+      .friars-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
       .hero-ctas { flex-direction: column; align-items: center; }
+      .parallax-break { height: 35vh; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== NAVIGATION ========== -->
-  <nav class="nav">
+  <!-- NAV -->
+  <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">St. Patrick's <em>Priory</em></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#friars">Our Friars</a></li>
         <li><a href="#ministry">Ministry</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
@@ -737,9 +633,11 @@
     </div>
   </nav>
 
-  <!-- ========== HERO ========== -->
+  <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero-bg"></div>
+    <div class="hero-bg" id="heroBg">
+      <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=1920&q=80" alt="Gothic church interior with stained glass" loading="eager">
+    </div>
     <div class="hero-content">
       <div class="hero-shield">✠</div>
       <p class="hero-overtitle">Order of Preachers — Columbus, Ohio</p>
@@ -750,28 +648,25 @@
         <a href="#ministry" class="btn btn-solid"><span>Our Preaching</span></a>
       </div>
     </div>
-    <a href="#motto" class="hero-scroll"><span></span></a>
+    <div class="hero-scroll"><div class="hero-scroll-line"></div></div>
   </section>
 
-  <!-- ========== MOTTO BAND ========== -->
-  <section class="motto" id="motto">
-    <blockquote>
+  <!-- MOTTO -->
+  <section class="motto">
+    <blockquote class="reveal">
       "To praise, to bless, to preach."
       <cite>Motto of the Order of Preachers</cite>
     </blockquote>
   </section>
 
-  <!-- ========== ABOUT ========== -->
+  <!-- ABOUT -->
   <section class="about" id="about">
     <div class="container">
       <div class="about-grid">
-        <div class="about-image reveal">
-          <div class="img-placeholder">
-            <!-- Replace with: <img src="your-image.jpg" alt="St. Patrick's Priory"> -->
-            Priory photo placeholder
-          </div>
+        <div class="about-image reveal-left">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Dominican friar in prayer" loading="lazy">
         </div>
-        <div class="about-text reveal">
+        <div class="reveal-right">
           <p class="section-label">About the Priory</p>
           <h2 class="section-title">A Home for Dominican Life in Columbus</h2>
           <p class="section-body">
@@ -788,7 +683,15 @@
     </div>
   </section>
 
-  <!-- ========== FRIARS ========== -->
+  <!-- PARALLAX BREAK 1 -->
+  <div class="parallax-break">
+    <img src="https://images.unsplash.com/photo-1473177104440-ffee2f376098?w=1920&q=80" alt="Church interior with arches" loading="lazy" class="parallax-img">
+    <div class="overlay">
+      <p class="overlay-text reveal">"Veritas" — Truth</p>
+    </div>
+  </div>
+
+  <!-- FRIARS -->
   <section class="friars" id="friars">
     <div class="container">
       <div class="friars-header reveal">
@@ -798,19 +701,25 @@
           Our community of Dominican friars is dedicated to the pursuit of truth and the salvation of souls through preaching, teaching, and the sacramental life of the Church.
         </p>
       </div>
-      <div class="friars-grid">
+      <div class="friars-grid stagger">
         <div class="friar-card reveal">
-          <div class="avatar">✠</div>
+          <div class="avatar-wrap">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Fr. John Doe, O.P." loading="lazy">
+          </div>
           <h3>Fr. John Doe, O.P.</h3>
           <p class="role">Prior</p>
         </div>
         <div class="friar-card reveal">
-          <div class="avatar">✠</div>
+          <div class="avatar-wrap">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="Fr. James Smith, O.P." loading="lazy">
+          </div>
           <h3>Fr. James Smith, O.P.</h3>
           <p class="role">Subprior & Pastor</p>
         </div>
         <div class="friar-card reveal">
-          <div class="avatar">✠</div>
+          <div class="avatar-wrap">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Fr. Thomas Aquinas, O.P." loading="lazy">
+          </div>
           <h3>Fr. Thomas Aquinas, O.P.</h3>
           <p class="role">Parochial Vicar</p>
         </div>
@@ -818,7 +727,7 @@
     </div>
   </section>
 
-  <!-- ========== PREACHING & MINISTRY ========== -->
+  <!-- MINISTRY -->
   <section class="ministry" id="ministry">
     <div class="container ministry-content">
       <div class="ministry-intro reveal">
@@ -828,19 +737,19 @@
           As sons of St. Dominic, our charism is preaching. From the pulpit to the classroom, from retreats to the streets, we proclaim the truth of Jesus Christ for the salvation of souls.
         </p>
       </div>
-      <div class="ministry-cards">
+      <div class="ministry-cards stagger">
         <div class="ministry-card reveal">
-          <span class="card-icon">📖</span>
+          <div class="card-num">01</div>
           <h3>Liturgical Preaching</h3>
           <p>The Sunday homily is the heart of Dominican preaching. Our friars prepare each homily through deep study of Sacred Scripture and the living Tradition of the Church.</p>
         </div>
         <div class="ministry-card reveal">
-          <span class="card-icon">🎓</span>
+          <div class="card-num">02</div>
           <h3>Teaching &amp; Formation</h3>
           <p>From RCIA to adult faith formation, Bible studies to lecture series, the friars provide robust intellectual formation rooted in the thought of St. Thomas Aquinas.</p>
         </div>
         <div class="ministry-card reveal">
-          <span class="card-icon">🙏</span>
+          <div class="card-num">03</div>
           <h3>Retreats &amp; Missions</h3>
           <p>Our friars are available for parish missions, days of recollection, retreats, and conferences — bringing the Dominican tradition of preaching to communities near and far.</p>
         </div>
@@ -848,7 +757,32 @@
     </div>
   </section>
 
-  <!-- ========== CONTACT ========== -->
+  <!-- PARALLAX BREAK 2 -->
+  <div class="parallax-break">
+    <img src="https://images.unsplash.com/photo-1506796559504-62d6ac6c15a7?w=1920&q=80" alt="Candlelight in church" loading="lazy" class="parallax-img">
+    <div class="overlay">
+      <p class="overlay-text reveal">"Laudare, Benedicere, Praedicare"</p>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="gallery-header reveal">
+        <p class="section-label">Life at the Priory</p>
+        <h2 class="section-title">Gallery</h2>
+      </div>
+      <div class="gallery-grid stagger">
+        <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=800&q=80" alt="Church interior" loading="lazy"></div>
+        <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1473177104440-ffee2f376098?w=400&q=80" alt="Gothic arches" loading="lazy"></div>
+        <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1506796559504-62d6ac6c15a7?w=400&q=80" alt="Candles" loading="lazy"></div>
+        <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Prayer" loading="lazy"></div>
+        <div class="g-item reveal"><img src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=400&q=80" alt="Stained glass" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="container">
       <div class="reveal">
@@ -856,37 +790,24 @@
         <h2 class="section-title">Contact &amp; Location</h2>
       </div>
       <div class="contact-grid">
-        <div class="contact-info reveal">
+        <div class="contact-info reveal-left">
           <h3>Address</h3>
-          <p>
-            St. Patrick's Priory<br>
-            280 North Grant Avenue<br>
-            Columbus, Ohio 43215
-          </p>
-
+          <p>St. Patrick's Priory<br>280 North Grant Avenue<br>Columbus, Ohio 43215</p>
           <h3>Phone</h3>
           <p><a href="tel:+16142249522">+1 (614) 224-9522</a></p>
-
           <h3>Email</h3>
           <p><a href="mailto:info@stpatrickpriory.com">info@stpatrickpriory.com</a></p>
-
           <h3>Parish Website</h3>
           <p><a href="https://www.stpatrickcolumbus.org" target="_blank" rel="noopener">stpatrickcolumbus.org</a></p>
         </div>
-        <div class="contact-map reveal">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.5!2d-82.9966!3d39.9700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388F3B3B3B3B3B%3A0x0!2s280+N+Grant+Ave%2C+Columbus%2C+OH+43215!5e0!3m2!1sen!2sus!4v1700000000000"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="St. Patrick's Priory location">
-          </iframe>
+        <div class="contact-map reveal-right">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.5!2d-82.9966!3d39.9700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388F3B3B3B3B3B%3A0x0!2s280+N+Grant+Ave%2C+Columbus%2C+OH+43215!5e0!3m2!1sen!2sus!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="St. Patrick's Priory location"></iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <p class="footer-logo">St. Patrick's <em>Priory</em></p>
@@ -896,29 +817,73 @@
     </div>
   </footer>
 
-  <!-- ========== SCRIPTS ========== -->
+  <!-- SCRIPTS -->
   <script>
-    // Mobile nav toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-    // Close on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    const heroSection = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
+    // Hero image Ken Burns on load
+    const heroBg = document.getElementById('heroBg');
+    const heroImg = heroBg.querySelector('img');
+    heroImg.addEventListener('load', () => heroBg.classList.add('loaded'));
+    if (heroImg.complete) heroBg.classList.add('loaded');
+
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // Scroll reveal with Intersection Observer
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => observer.observe(el));
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Parallax effect on scroll
+    const parallaxImgs = document.querySelectorAll('.parallax-img');
+    let ticking = false;
+    function updateParallax() {
+      parallaxImgs.forEach(img => {
+        const section = img.parentElement;
+        const rect = section.getBoundingClientRect();
+        const windowH = window.innerHeight;
+        if (rect.top < windowH && rect.bottom > 0) {
+          const progress = (windowH - rect.top) / (windowH + rect.height);
+          const translate = (progress - 0.5) * 80;
+          img.style.transform = `translateY(${translate}px)`;
+        }
+      });
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    });
+
+    // Smooth anchor scrolling with offset
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
   </script>
 
 </body>
