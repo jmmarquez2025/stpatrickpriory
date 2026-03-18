@@ -39,3 +39,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+// Back to top button
+const btt = document.createElement('button');
+btt.className = 'back-to-top';
+btt.innerHTML = '↑';
+btt.setAttribute('aria-label', 'Back to top');
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+document.body.appendChild(btt);
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 600);
+});
