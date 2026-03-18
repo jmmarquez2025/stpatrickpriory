@@ -40,10 +40,10 @@ a { text-decoration: none; color: inherit; }
 .pillar-icon { width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-family: var(--font-display); font-size: 1.4rem; color: var(--gold); }
 
 /* Nav */
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 36px; transition: all 0.5s var(--ease); }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 36px; background: var(--forest-deep); border-bottom: 1px solid rgba(197,151,62,0.15); transition: all 0.5s var(--ease); }
 .nav.scrolled { background: rgba(13,31,21,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(197,151,62,0.12); }
-.nav-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 80px; transition: height 0.5s var(--ease); }
-.nav.scrolled .nav-inner { height: 64px; }
+.nav-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; transition: height 0.5s var(--ease); }
+.nav.scrolled .nav-inner { height: 60px; }
 .nav-logo { font-family: var(--font-display); font-size: 0.95rem; color: var(--cream); letter-spacing: 3px; font-weight: 500; }
 .nav-logo em { font-style: normal; color: var(--gold); }
 .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -53,9 +53,9 @@ a { text-decoration: none; color: inherit; }
 .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--cream); transition: all 0.3s; }
 
 /* Page Header (subpages) */
-.page-header { padding: 160px 0 80px; background: var(--forest-deep); text-align: center; position: relative; overflow: hidden; }
+.page-header { padding: 140px 0 80px; background: var(--forest-deep); text-align: center; position: relative; overflow: hidden; }
 .page-header::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0v60M0 30h60' stroke='rgba(197,151,62,0.04)' stroke-width='0.5'/%3E%3C/svg%3E"); }
-.page-header .section-label { color: var(--gold-light); }
+.page-header .section-label { color: var(--gold-light); letter-spacing: 3px; font-size: 0.75rem; }
 .page-header .section-title { color: var(--cream); position: relative; }
 .page-header .section-body { color: var(--cream-dark); margin: 0 auto; position: relative; }
 
