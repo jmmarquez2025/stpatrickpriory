@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St. Patrick's Priory — Dominican Friars, Columbus, OH</title>
+  <meta name="description" content="Home of the Dominican Friars at St. Patrick Church in downtown Columbus, Ohio. Dedicated to preaching, prayer, and community.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       CSS VARIABLES
+    ======================================== */
+    :root {
+      --color-forest: #1a3a2a;
+      --color-forest-deep: #0f2418;
+      --color-forest-mid: #254a36;
+      --color-gold: #c5973e;
+      --color-gold-light: #dbb568;
+      --color-gold-pale: #f0ddb0;
+      --color-cream: #f5f0e6;
+      --color-cream-dark: #e8dece;
+      --color-ivory: #faf8f2;
+      --color-text: #2c2c2c;
+      --color-text-muted: #5a5a5a;
+      --color-white: #ffffff;
+
+      --font-display: 'Cinzel', serif;
+      --font-body-serif: 'Cormorant Garamond', serif;
+      --font-body-sans: 'Source Sans 3', sans-serif;
+
+      --max-width: 1200px;
+      --section-pad: 100px;
+    }
+
+    /* ========================================
+       RESET & BASE
+    ======================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body-sans);
+      color: var(--color-text);
+      background: var(--color-ivory);
+      line-height: 1.7;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ========================================
+       UTILITY
+    ======================================== */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .section-label {
+      font-family: var(--font-body-sans);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--color-forest);
+      margin-bottom: 24px;
+    }
+
+    .section-body {
+      font-family: var(--font-body-serif);
+      font-size: 1.25rem;
+      line-height: 1.8;
+      color: var(--color-text-muted);
+      max-width: 640px;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body-sans);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 36px;
+      border: 2px solid var(--color-gold);
+      color: var(--color-gold);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--color-gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+      z-index: 0;
+    }
+    .btn:hover::before { transform: scaleX(1); }
+    .btn:hover { color: var(--color-forest-deep); }
+    .btn span { position: relative; z-index: 1; }
+
+    .btn-solid {
+      background: var(--color-gold);
+      color: var(--color-forest-deep);
+      border-color: var(--color-gold);
+    }
+    .btn-solid::before { background: var(--color-gold-light); }
+
+    /* ========================================
+       NAVIGATION
+    ======================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(15, 36, 24, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(197, 151, 62, 0.15);
+      transition: background 0.4s ease;
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--color-cream);
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+    .nav-logo em {
+      font-style: normal;
+      color: var(--color-gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body-sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-cream-dark);
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--color-gold);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--color-gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-cream);
+      transition: all 0.3s;
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--color-forest-deep);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(15, 36, 24, 0.35) 0%,
+          rgba(15, 36, 24, 0.55) 50%,
+          rgba(15, 36, 24, 0.85) 100%
+        ),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="0.5" fill="rgba(197,151,62,0.08)"/></pattern></defs><rect fill="url(%23g)" width="100" height="100"/></svg>');
+      background-color: var(--color-forest-deep);
+    }
+
+    /* Decorative cross watermark */
+    .hero-bg::before {
+      content: '✠';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40vw;
+      color: rgba(197, 151, 62, 0.03);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 32px;
+      max-width: 800px;
+    }
+
+    .hero-shield {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 32px;
+      border: 2px solid var(--color-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--color-gold);
+      animation: fadeDown 1s ease 0.2s both;
+    }
+
+    .hero-overtitle {
+      font-family: var(--font-body-sans);
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--color-gold-light);
+      margin-bottom: 20px;
+      animation: fadeDown 1s ease 0.4s both;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      color: var(--color-cream);
+      line-height: 1.15;
+      margin-bottom: 12px;
+      animation: fadeDown 1s ease 0.6s both;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body-serif);
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--color-gold-pale);
+      margin-bottom: 40px;
+      font-weight: 400;
+      animation: fadeDown 1s ease 0.8s both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeDown 1s ease 1s both;
+    }
+
+    .hero .btn { border-color: var(--color-gold-light); color: var(--color-cream); }
+    .hero .btn::before { background: var(--color-gold); }
+    .hero .btn:hover { color: var(--color-forest-deep); }
+    .hero .btn-solid { background: var(--color-gold); color: var(--color-forest-deep); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: bounce 2s infinite 2s;
+    }
+    .hero-scroll span {
+      display: block;
+      width: 20px;
+      height: 32px;
+      border: 2px solid rgba(197, 151, 62, 0.4);
+      border-radius: 12px;
+      position: relative;
+    }
+    .hero-scroll span::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 8px;
+      background: var(--color-gold);
+      border-radius: 2px;
+      animation: scrollDot 2s infinite;
+    }
+
+    /* ========================================
+       MOTTO BAND
+    ======================================== */
+    .motto {
+      background: var(--color-forest);
+      padding: 48px 32px;
+      text-align: center;
+      border-top: 3px solid var(--color-gold);
+    }
+
+    .motto blockquote {
+      font-family: var(--font-body-serif);
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-style: italic;
+      color: var(--color-cream);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .motto cite {
+      display: block;
+      margin-top: 16px;
+      font-style: normal;
+      font-family: var(--font-body-sans);
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--color-gold);
+    }
+
+    /* ========================================
+       ABOUT SECTION
+    ======================================== */
+    .about {
+      padding: var(--section-pad) 0;
+      background: var(--color-ivory);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image .img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(145deg, var(--color-forest-mid), var(--color-forest-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold-pale);
+      font-family: var(--font-body-serif);
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--color-gold);
+      z-index: -1;
+    }
+
+    /* ========================================
+       FRIARS SECTION
+    ======================================== */
+    .friars {
+      padding: var(--section-pad) 0;
+      background: var(--color-cream);
+    }
+
+    .friars-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .friars-header .section-body {
+      margin: 0 auto;
+    }
+
+    .friars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .friar-card {
+      text-align: center;
+    }
+
+    .friar-card .avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--color-forest-mid), var(--color-forest-deep));
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--color-gold-pale);
+      border: 3px solid var(--color-gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .friar-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--color-forest);
+      margin-bottom: 4px;
+    }
+
+    .friar-card .role {
+      font-family: var(--font-body-serif);
+      font-style: italic;
+      color: var(--color-text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* ========================================
+       PREACHING & MINISTRY
+    ======================================== */
+    .ministry {
+      padding: var(--section-pad) 0;
+      background: var(--color-forest-deep);
+      color: var(--color-cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ministry::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(197, 151, 62, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(197, 151, 62, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .ministry .section-title { color: var(--color-cream); }
+    .ministry .section-body { color: var(--color-cream-dark); }
+
+    .ministry-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .ministry-intro {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .ministry-intro .section-body { margin: 0 auto; }
+
+    .ministry-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .ministry-card {
+      padding: 48px 36px;
+      border: 1px solid rgba(197, 151, 62, 0.2);
+      background: rgba(26, 58, 42, 0.4);
+      transition: all 0.4s ease;
+    }
+
+    .ministry-card:hover {
+      border-color: var(--color-gold);
+      background: rgba(26, 58, 42, 0.7);
+      transform: translateY(-4px);
+    }
+
+    .ministry-card .card-icon {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      display: block;
+      color: var(--color-gold);
+    }
+
+    .ministry-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      margin-bottom: 16px;
+      color: var(--color-cream);
+    }
+
+    .ministry-card p {
+      font-family: var(--font-body-serif);
+      font-size: 1.1rem;
+      color: var(--color-cream-dark);
+      line-height: 1.7;
+    }
+
+    /* ========================================
+       CONTACT & LOCATION
+    ======================================== */
+    .contact {
+      padding: var(--section-pad) 0;
+      background: var(--color-ivory);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--color-forest);
+      margin-bottom: 8px;
+      margin-top: 32px;
+    }
+    .contact-info h3:first-of-type { margin-top: 0; }
+
+    .contact-info p, .contact-info a {
+      font-family: var(--font-body-serif);
+      font-size: 1.15rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+    .contact-info a { color: var(--color-gold); transition: color 0.3s; }
+    .contact-info a:hover { color: var(--color-forest); }
+
+    .contact-map {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--color-cream-dark);
+      border: 1px solid var(--color-cream-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body-serif);
+      font-style: italic;
+      color: var(--color-text-muted);
+      font-size: 1rem;
+      overflow: hidden;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer {
+      background: var(--color-forest-deep);
+      padding: 48px 0;
+      text-align: center;
+      border-top: 3px solid var(--color-gold);
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: var(--color-cream);
+      margin-bottom: 16px;
+    }
+    .footer-logo em { font-style: normal; color: var(--color-gold); }
+
+    .footer p {
+      font-family: var(--font-body-sans);
+      font-size: 0.8rem;
+      color: rgba(245, 240, 230, 0.5);
+      letter-spacing: 1px;
+    }
+
+    .footer-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--color-gold);
+      margin: 20px auto;
+      opacity: 0.4;
+    }
+
+    /* ========================================
+       ANIMATIONS
+    ======================================== */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(8px); }
+    }
+
+    @keyframes scrollDot {
+      0%   { opacity: 1; top: 6px; }
+      100% { opacity: 0; top: 16px; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 900px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .friars-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .ministry-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image::after { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --section-pad: 64px; }
+
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* Mobile menu */
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(15, 36, 24, 0.97);
+        padding: 32px;
+        gap: 24px;
+        border-bottom: 1px solid rgba(197, 151, 62, 0.2);
+      }
+
+      .friars-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-ctas { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">St. Patrick's <em>Priory</em></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#friars">Our Friars</a></li>
+        <li><a href="#ministry">Ministry</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-shield">✠</div>
+      <p class="hero-overtitle">Order of Preachers — Columbus, Ohio</p>
+      <h1>St. Patrick's Priory</h1>
+      <p class="hero-subtitle">Contemplata aliis tradere — To hand on to others the fruits of contemplation</p>
+      <div class="hero-ctas">
+        <a href="#about" class="btn"><span>Discover the Priory</span></a>
+        <a href="#ministry" class="btn btn-solid"><span>Our Preaching</span></a>
+      </div>
+    </div>
+    <a href="#motto" class="hero-scroll"><span></span></a>
+  </section>
+
+  <!-- ========== MOTTO BAND ========== -->
+  <section class="motto" id="motto">
+    <blockquote>
+      "To praise, to bless, to preach."
+      <cite>Motto of the Order of Preachers</cite>
+    </blockquote>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <div class="img-placeholder">
+            <!-- Replace with: <img src="your-image.jpg" alt="St. Patrick's Priory"> -->
+            Priory photo placeholder
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <p class="section-label">About the Priory</p>
+          <h2 class="section-title">A Home for Dominican Life in Columbus</h2>
+          <p class="section-body">
+            St. Patrick's Priory is home to the Dominican Friars who serve St. Patrick Church in the heart of downtown Columbus, Ohio. Rooted in the eight-hundred-year tradition of the Order of Preachers founded by St. Dominic de Guzmán, the friars live a common life of prayer, study, and preaching.
+          </p>
+          <br>
+          <p class="section-body">
+            The priory is a place of fraternity, contemplation, and mission — where the friars are formed and sustained for their apostolate of bringing the Gospel to the world.
+          </p>
+          <br>
+          <a href="#contact" class="btn"><span>Get in Touch</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FRIARS ========== -->
+  <section class="friars" id="friars">
+    <div class="container">
+      <div class="friars-header reveal">
+        <p class="section-label">Our Community</p>
+        <h2 class="section-title">The Friars</h2>
+        <p class="section-body">
+          Our community of Dominican friars is dedicated to the pursuit of truth and the salvation of souls through preaching, teaching, and the sacramental life of the Church.
+        </p>
+      </div>
+      <div class="friars-grid">
+        <div class="friar-card reveal">
+          <div class="avatar">✠</div>
+          <h3>Fr. John Doe, O.P.</h3>
+          <p class="role">Prior</p>
+        </div>
+        <div class="friar-card reveal">
+          <div class="avatar">✠</div>
+          <h3>Fr. James Smith, O.P.</h3>
+          <p class="role">Subprior & Pastor</p>
+        </div>
+        <div class="friar-card reveal">
+          <div class="avatar">✠</div>
+          <h3>Fr. Thomas Aquinas, O.P.</h3>
+          <p class="role">Parochial Vicar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PREACHING & MINISTRY ========== -->
+  <section class="ministry" id="ministry">
+    <div class="container ministry-content">
+      <div class="ministry-intro reveal">
+        <p class="section-label">Preaching &amp; Ministry</p>
+        <h2 class="section-title">Bringing the Gospel to the World</h2>
+        <p class="section-body">
+          As sons of St. Dominic, our charism is preaching. From the pulpit to the classroom, from retreats to the streets, we proclaim the truth of Jesus Christ for the salvation of souls.
+        </p>
+      </div>
+      <div class="ministry-cards">
+        <div class="ministry-card reveal">
+          <span class="card-icon">📖</span>
+          <h3>Liturgical Preaching</h3>
+          <p>The Sunday homily is the heart of Dominican preaching. Our friars prepare each homily through deep study of Sacred Scripture and the living Tradition of the Church.</p>
+        </div>
+        <div class="ministry-card reveal">
+          <span class="card-icon">🎓</span>
+          <h3>Teaching &amp; Formation</h3>
+          <p>From RCIA to adult faith formation, Bible studies to lecture series, the friars provide robust intellectual formation rooted in the thought of St. Thomas Aquinas.</p>
+        </div>
+        <div class="ministry-card reveal">
+          <span class="card-icon">🙏</span>
+          <h3>Retreats &amp; Missions</h3>
+          <p>Our friars are available for parish missions, days of recollection, retreats, and conferences — bringing the Dominican tradition of preaching to communities near and far.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Visit Us</p>
+        <h2 class="section-title">Contact &amp; Location</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>Address</h3>
+          <p>
+            St. Patrick's Priory<br>
+            280 North Grant Avenue<br>
+            Columbus, Ohio 43215
+          </p>
+
+          <h3>Phone</h3>
+          <p><a href="tel:+16142249522">+1 (614) 224-9522</a></p>
+
+          <h3>Email</h3>
+          <p><a href="mailto:info@stpatrickpriory.com">info@stpatrickpriory.com</a></p>
+
+          <h3>Parish Website</h3>
+          <p><a href="https://www.stpatrickcolumbus.org" target="_blank" rel="noopener">stpatrickcolumbus.org</a></p>
+        </div>
+        <div class="contact-map reveal">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.5!2d-82.9966!3d39.9700!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388F3B3B3B3B3B%3A0x0!2s280+N+Grant+Ave%2C+Columbus%2C+OH+43215!5e0!3m2!1sen!2sus!4v1700000000000"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="St. Patrick's Priory location">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">St. Patrick's <em>Priory</em></p>
+      <div class="footer-divider"></div>
+      <p>Dominican Friars — Columbus, Ohio</p>
+      <p style="margin-top: 8px;">&copy; 2026 St. Patrick's Priory. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    // Close on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
