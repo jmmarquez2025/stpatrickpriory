@@ -160,7 +160,7 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 900px) {
   .content-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .friar-grid { grid-template-columns: 1fr 1fr; }
-  .card-grid { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
   .nav-links { display: none; }
